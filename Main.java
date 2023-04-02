@@ -15,8 +15,32 @@ public class Main {
             }
         }
     }
+
+    //selection sort
+    public static void sort(int n, int [] arr){
+        if (n==arr.length){
+            return;
+        }
+        int min=arr[n];
+        int minlock=n;
+        for (int i=n+1;i<arr.length;i++){
+            if (arr[i]<min){
+                min=arr[i];
+                minlock=i;
+            }
+        }
+        int temp = arr[n];
+        arr[n]=min;
+        arr[minlock]=temp;
+        sort(n+1, arr);
+    }
+
     public static void main(String[] args) {
-        int [] arr = {1,2,3,4,5,6,7,8,9,10};
-        System.out.println((binarySearch(5, arr,0,9)));
+
+        int [] arr = {1,9,6,4,5,3,7,8,10,2};
+        sort(0, arr);
+        //location of number in sorted arr
+        System.out.println((binarySearch(6, arr,0,9)));
+
     }
 }
